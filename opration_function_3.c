@@ -17,12 +17,15 @@ void rotl_f(stack_t **stack, unsigned int line_number)
 		return;
 	}
 
-	*stack = (*stack)->next;
-	while (tp->next)
-		tp = tp->next;
+	if (tp->next)
+	{
+		*stack = (*stack)->next;
+		while (tp->next)
+			tp = tp->next;
 
-	(*stack)->prev = NULL;
-	tp->next = tmp;
-	tmp->next = NULL;
-	tmp->prev = tp;
+		(*stack)->prev = NULL;
+		tp->next = tmp;
+		tmp->next = NULL;
+		tmp->prev = tp;
+	}
 }
