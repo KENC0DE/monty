@@ -10,7 +10,7 @@ void rotl_f(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
 	stack_t *tp = *stack;
 	stack_t *tmp = *stack;
 
-	if (!stack || !tp);
+	if (!stack || !tp)
 		return;
 
 	*stack = (*stack)->next;
