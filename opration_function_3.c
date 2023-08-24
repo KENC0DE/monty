@@ -5,7 +5,7 @@
  * @stack: the stack.
  * @line_number: the line number.
 */
-void rotl_f(stack_t **stack, __attribute__ ((unused))unsigned int line_number)
+void rotl_f(stack_t **stack, unsigned int line_number)
 {
 	stack_t *tp = *stack;
 	stack_t *tmp = *stack;
