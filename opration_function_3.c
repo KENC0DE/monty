@@ -11,7 +11,7 @@ void rotl_f(stack_t **stack, unsigned int line_number)
 	stack_t *tmp = *stack;
 
 	if (!stack || !tp)
-		nop(stack, line_number);
+		exit(EXIT_FAILURE);
 
 	*stack = (*stack)->next;
 	while (tp->next)
