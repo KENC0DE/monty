@@ -12,7 +12,10 @@ void rotl_f(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	if (!stack || !tp)
+	{
 		nop(stack, line_number);
+		return;
+	}
 
 	if (tp->next)
 	{
