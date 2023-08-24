@@ -12,7 +12,7 @@ void rotl_f(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	if (!stack || !tp)
-		exit(EXIT_FAILURE);
+		(void)stack;
 
 	*stack = (*stack)->next;
 	while (tp->next)
