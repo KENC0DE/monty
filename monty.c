@@ -15,20 +15,13 @@ int main(int ac, char **av)
 	FILE *fd;
 	stack_t *stack = NULL;
 	instruction_t instructions[] = {
-		{"push", push},
-		{"pall", pall},
-		{"pint", pint},
-		{"pop", pop},
-		{"swap", swap},
-		{"add", add},
-		{"nop", nop},
-		{"sub", sub},
-		{"div", _div},
-		{"mul", _mul},
-		{"mod", _mod},
-		{"pchar", pchar},
-		{"pstr", pstr},
-		{"rotl", rotl_f},
+		{"push", push},	{"pall", pall},
+		{"pint", pint},	{"pop", pop},
+		{"swap", swap},	{"add", add},
+		{"nop", nop}, {"sub", sub},
+		{"div", _div}, {"mul", _mul},
+		{"mod", _mod}, {"pchar", pchar},
+		{"pstr", pstr}, {"rotl", rotl_f},
 		{NULL, NULL}
 	};
 
