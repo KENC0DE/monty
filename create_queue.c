@@ -10,44 +10,26 @@
  */
 void insert(char **tokenized, unsigned int line_number, FILE *fd)
 {
-	cmds *new_cmd = malloc(sizeof(cmds)), *curr;
+	head.opcode = malloc(strlen(tokenized[0]) + 1);
 
-	if (!new_cmd)
+	if (!(head.opcode))
 		malloc_err(tokenized, fd);
-	new_cmd->opcode = malloc(strlen(tokenized[0]) + 1);
-	if (!(new_cmd->opcode))
-	{
-		free(new_cmd);
-		malloc_err(tokenized, fd);
-	}
-	strcpy(new_cmd->opcode, tokenized[0]);
+
+	strcpy(head.opcode, tokenized[0]);
 	if (tokenized[1])
 	{
-		new_cmd->args = malloc(strlen(tokenized[1]) + 1);
-		if (!(new_cmd->args))
+		head.args = malloc(strlen(tokenized[1]) + 1);
+		if (!(head.args))
 		{
-			free(new_cmd->opcode);
-			free(new_cmd);
+			free(head.opcode);
 			malloc_err(tokenized, fd);
 		}
-		strcpy(new_cmd->args, tokenized[1]);
+		strcpy(head.args, tokenized[1]);
 	}
 	else
-		new_cmd->args = NULL;
-	new_cmd->line_number = line_number;
-	new_cmd->err_stat = 0;
-	new_cmd->next = NULL;
-	if (head == NULL)
-	{
-		new_cmd->prev = NULL;
-		head = new_cmd;
-		return;
-	}
-	curr = head;
-	while (curr->next)
-		curr = curr->next;
-	new_cmd->prev = curr;
-	curr->next = new_cmd;
+		head.args = NULL;
+	head.line_number = line_number;
+	head.err_stat = 0;
 }
 
 /**
@@ -57,18 +39,10 @@ void insert(char **tokenized, unsigned int line_number, FILE *fd)
  */
 void display(void)
 {
-	cmds *curr;
-
-	if (!head)
-		return;
-	curr = head;
-	while (curr)
-	{
-		printf("opcode: %s\n", curr->opcode);
-		printf("Arguments: %s\n", curr->args);
-		printf("Line Number: %d\n", curr->line_number);
-		curr = curr->next;
-	}
+	if (head.opcode)
+		printf("opcode: %s\n", head.opcode);
+	if (head.args)
+		printf("args: %s\n", head.args);
 }
 
 /**
@@ -78,12 +52,15 @@ void display(void)
  */
 void del(void)
 {
-	if (head)
+	if (head.opcode)
 	{
-		free(head->opcode);
-		free(head->args);
-		free(head);
-		head = NULL;
+		free(head.opcode);
+		head.opcode = NULL;
+	}
+	if (head.args)
+	{
+		free(head.args);
+		head.args = NULL;
 	}
 }
 

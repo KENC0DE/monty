@@ -1,7 +1,7 @@
 #include "monty.h"
 
 void unused(void);
-cmds *head = NULL;
+cmds head = {NULL, NULL, 0, 0, 0};
 
 /**
  * main - execution point of monty interpreter
@@ -22,7 +22,8 @@ int main(int ac, char **av)
 		{"div", _div}, {"mul", _mul},
 		{"mod", _mod}, {"pchar", pchar},
 		{"pstr", pstr}, {"rotl", rotl_f},
-		{"rotr", rotr}, {NULL, NULL}
+		{"rotr", rotr}, {"queue", queue_f},
+		{"stack", stack_f}, {NULL, NULL}
 	};
 
 	if (ac != 2)

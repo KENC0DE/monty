@@ -12,13 +12,13 @@ void _div(stack_t **stack, unsigned int line_number)
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
-		head->err_stat = -1;
+		head.err_stat = -1;
 		return;
 	}
 	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		head->err_stat = -1;
+		head.err_stat = -1;
 		return;
 	}
 	(*stack)->next->n /= (*stack)->n;
@@ -37,7 +37,7 @@ void _mul(stack_t **stack, unsigned int line_number)
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
-		head->err_stat = -1;
+		head.err_stat = -1;
 		return;
 	}
 	(*stack)->next->n *= (*stack)->n;
@@ -56,13 +56,13 @@ void _mod(stack_t **stack, unsigned int line_number)
 	if (stack_len(*stack) < 2)
 	{
 		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-		head->err_stat = -1;
+		head.err_stat = -1;
 		return;
 	}
 	if ((*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
-		head->err_stat = -1;
+		head.err_stat = -1;
 		return;
 	}
 	(*stack)->next->n %= (*stack)->n;
@@ -80,13 +80,13 @@ void pchar(stack_t **stack, unsigned int line_number)
 	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
-		head->err_stat = -1;
+		head.err_stat = -1;
 		return;
 	}
 	if ((*stack)->n > 127 || (*stack)->n < 0)
 	{
 		fprintf(stderr, "L%d: can't pchar, value out of range\n", line_number);
-		head->err_stat = -1;
+		head.err_stat = -1;
 		return;
 	}
 	printf("%c\n", (*stack)->n);

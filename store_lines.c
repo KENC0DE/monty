@@ -59,9 +59,9 @@ void apply_instruction(stack_t **stack, unsigned int line_number,
 
 	while (instructions[i].opcode)
 	{
-		if (strcmp(head->opcode, instructions[i].opcode) == 0)
+		if (strcmp(head.opcode, instructions[i].opcode) == 0)
 			(instructions[i].f)(stack, line_number);
-		if ((head->err_stat) < 0)
+		if ((head.err_stat) < 0)
 		{
 			del();
 			free_stack(stack);

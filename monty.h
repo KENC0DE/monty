@@ -47,8 +47,7 @@ typedef struct instruction_s
  * @args: operation arguments
  * @line_number: line number on file where operation is
  * @err_stat: holds the error status when an error is triggered
- * @prev: points to the previous element
- * @next: points to the next element
+ * @SQ: flag that tells program if mode is stack or queue
  *
  * Description: a queue that holds the necessary information to run monty
  * bytecode operations
@@ -59,11 +58,10 @@ typedef struct commands
 	char *args;
 	unsigned int line_number;
 	int err_stat;
-	struct commands *next;
-	struct commands *prev;
+	int SQ;
 } cmds;
 
-extern cmds *head;
+extern cmds head;
 
 /* Queue functions */
 void insert(char **tokenized, unsigned int line_number, FILE *fd);
@@ -86,6 +84,13 @@ void pchar(stack_t **stack, unsigned int line_number);
 void pstr(stack_t **stack, unsigned int line_number);
 void rotl_f(stack_t **stack, unsigned int line_number);
 void rotr(stack_t **stack, unsigned int line_number);
+
+
+/* Tests */
+void queue_f(stack_t **stack, unsigned int line_number);
+void stack_f(stack_t **stack, unsigned int line_number);
+void add_node_end(stack_t **stack, stack_t **new_node);
+
 
 /* count stack elements */
 size_t stack_len(stack_t *stack);
